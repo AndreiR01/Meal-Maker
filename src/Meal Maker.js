@@ -1,15 +1,15 @@
 const menu = {
   _courses: {
-    appertizers : [],
+    appetizers : [],
     mains : [],
     desserts :[]
   },
 
-  get appertizers (){
-
+  get appetizers (){
+    return appetizerIn;
   },
-  set appertizers(appertizerIn){
-
+  set appetizers(appetizerIn){
+		//appetizerIn =
   },
   get mains (){
 
@@ -23,20 +23,26 @@ const menu = {
   set desserts(dessertIn){
 
   },
+  set courses (coursesMenu) {
+    coursesMenu = this._courses;
+  },
   get courses () {
     return {
-      appertizers:this._courses.appertizers,
+      appetizers:this._courses.appetizers,
       mains:this._courses.mains,
       desserts:this._courses.desserts
     };
   },
 
   addDishToCourse(courseName,dishName,dishPrice) {
+
     const dish = {
-      _name:courseName,
+      _name:dishName,
       _price:dishPrice
-    };
+      }
+
     return this._courses[courseName].push(dish);
+
   },
 
   getRandomDishFromCourse (courseName) {
@@ -45,13 +51,14 @@ const menu = {
     return dishes[randomNumber];
   },
 
+
   generateRandomMeal () {
-    const appetizer = this.getRandomDishFromCourse('appetizers');
-    const appertizers = this.getRandomDishFromCourse('mains');
+    const appetizers = this.getRandomDishFromCourse('appetizers');
+    const mains = this.getRandomDishFromCourse('mains');
     const desserts = this.getRandomDishFromCourse('desserts');
-    const totalPrice = appertizer._price + desserts._price + appertizer._price;
-    return `Your meal is ${appetizer._name},${appetizer._name} and
-    ${appetizer._name} .Total price of your meal is ${totalPrice}.`;
+    const totalPrice = appetizers._price + desserts._price + mains._price;
+    return `Your meal is ${appetizers._name},${mains._name} and
+    ${desserts._name} .Total price of your meal is ${totalPrice}.`;
 
   }
 };
@@ -68,4 +75,4 @@ menu.addDishToCourse('desserts', 'Tiramisu', 3.25);
 menu.addDishToCourse('desserts', 'Ice Cream', 5.30);
 menu.addDishToCourse('desserts', 'Brownie', 4.25);
 menu.addDishToCourse('desserts', 'Cheesecake', 3.25);
-menu.generateRandomMeal();
+console.log(menu.generateRandomMeal());
